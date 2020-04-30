@@ -1,5 +1,4 @@
-import { Comment } from 'less-offset-comments';
-import { DefaultCommentFromDb, DefaultComment } from '@ts-stack/comments-to-tree';
+import { DefaultCommentFromDb } from '@ts-stack/comments-to-tree';
 
 export class RootComment {
   public userId = 1;
@@ -18,5 +17,3 @@ export class DemoComment {
 export interface CommentFromDb extends DefaultCommentFromDb {
   userId: number;
 }
-
-export interface CommentTree extends DefaultComment, Comment {}

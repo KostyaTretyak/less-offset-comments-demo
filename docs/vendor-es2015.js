@@ -62520,7 +62520,23 @@ const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.1.4
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-class DefaultCommentsToTree {
+var main_1 = __webpack_require__(/*! ./main */ "./node_modules/@ts-stack/comments-to-tree/dist/main.js");
+exports.CommentsToTree = main_1.CommentsToTree;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@ts-stack/comments-to-tree/dist/main.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@ts-stack/comments-to-tree/dist/main.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class CommentsToTree {
     /**
      * Converts a one-dimensional array of comments into a comments tree.
      * The array must be sorted in reverse order - at its beginning there are the most recent comments.
@@ -62530,13 +62546,15 @@ class DefaultCommentsToTree {
      * @param actionChild The action you need to apply to insert a child comment to comments tree.
      */
     static getTree(allCommentsFromDb, actionRoot = 'unshift', actionChild = 'unshift') {
-        const preparedComments = this.transform(allCommentsFromDb);
-        const length = preparedComments.length;
+        const length = allCommentsFromDb.length;
         const commentsTree = [];
-        preparedComments.forEach((comment, index) => {
+        allCommentsFromDb.forEach((comment) => {
+            comment.children = comment.children || [];
+        });
+        allCommentsFromDb.forEach((comment, index) => {
             if (comment.parentId) {
                 for (let i = index + 1; i < length; i++) {
-                    const parent = preparedComments[i];
+                    const parent = allCommentsFromDb[i];
                     if (parent.commentId == comment.parentId) {
                         parent.children[actionChild](comment);
                         comment.parent = parent;
@@ -62551,22 +62569,9 @@ class DefaultCommentsToTree {
         });
         return commentsTree;
     }
-    /**
-     * Transforms comments that came from a database in a one-dimensional array,
-     * to comments in a one-dimensional array that have some additional properties.
-     */
-    static transform(allCommentsFromDb) {
-        return allCommentsFromDb.map((commentFromDb) => {
-            return {
-                commentId: commentFromDb.commentId,
-                parentId: commentFromDb.parentId || 0,
-                children: [],
-            };
-        });
-    }
 }
-exports.DefaultCommentsToTree = DefaultCommentsToTree;
-//# sourceMappingURL=index.js.map
+exports.CommentsToTree = CommentsToTree;
+//# sourceMappingURL=main.js.map
 
 /***/ }),
 

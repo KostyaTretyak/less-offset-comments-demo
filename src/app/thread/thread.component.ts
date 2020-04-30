@@ -3,16 +3,15 @@ import { FormControl } from '@angular/forms';
 
 import { LessOffsetComments } from 'less-offset-comments';
 
-import { DemoComment } from '../comment';
+import { DemoComment } from '../types';
 
 @Component({
   selector: 'cst-thread',
   templateUrl: './thread.component.html',
-  styleUrls: ['./thread.component.css'],
 })
 export class ThreadComponent implements OnInit {
   @Input() comments: DemoComment[];
-  control = new FormControl(1);
+  select = new FormControl(1);
 
   ngOnInit() {
     if (this.comments) {
@@ -21,7 +20,7 @@ export class ThreadComponent implements OnInit {
   }
 
   onSubmit(parent: DemoComment) {
-    const child = new DemoComment(this.control.value, parent);
+    const child = new DemoComment(this.select.value, parent);
 
     LessOffsetComments.unshiftComment(parent, child);
   }

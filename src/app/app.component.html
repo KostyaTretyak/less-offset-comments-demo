@@ -10,7 +10,7 @@
 <ng-container style="margin-top: 50px;">
   <button (click)="onSubmit()">Sumbit root comment</button>
   as user:
-  <select [formControl]="control">
+  <select [formControl]="select">
     <option *ngFor="let item of [1, 2, 3, 4]" [ngValue]="item">{{ item }}</option>
   </select>
 </ng-container>

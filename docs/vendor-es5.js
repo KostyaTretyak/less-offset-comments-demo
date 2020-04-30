@@ -86665,12 +86665,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: true
     });
 
-    var DefaultCommentsToTree = /*#__PURE__*/function () {
-      function DefaultCommentsToTree() {
-        _classCallCheck(this, DefaultCommentsToTree);
+    var main_1 = __webpack_require__(
+    /*! ./main */
+    "./node_modules/@ts-stack/comments-to-tree/dist/main.js");
+
+    exports.CommentsToTree = main_1.CommentsToTree; //# sourceMappingURL=index.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@ts-stack/comments-to-tree/dist/main.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/@ts-stack/comments-to-tree/dist/main.js ***!
+    \**************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesTsStackCommentsToTreeDistMainJs(module, exports, __webpack_require__) {
+    "use strict";
+
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+
+    var CommentsToTree = /*#__PURE__*/function () {
+      function CommentsToTree() {
+        _classCallCheck(this, CommentsToTree);
       }
 
-      _createClass2(DefaultCommentsToTree, null, [{
+      _createClass2(CommentsToTree, null, [{
         key: "getTree",
 
         /**
@@ -86684,13 +86709,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getTree(allCommentsFromDb) {
           var actionRoot = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'unshift';
           var actionChild = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'unshift';
-          var preparedComments = this.transform(allCommentsFromDb);
-          var length = preparedComments.length;
+          var length = allCommentsFromDb.length;
           var commentsTree = [];
-          preparedComments.forEach(function (comment, index) {
+          allCommentsFromDb.forEach(function (comment) {
+            comment.children = comment.children || [];
+          });
+          allCommentsFromDb.forEach(function (comment, index) {
             if (comment.parentId) {
               for (var i = index + 1; i < length; i++) {
-                var parent = preparedComments[i];
+                var parent = allCommentsFromDb[i];
 
                 if (parent.commentId == comment.parentId) {
                   parent.children[actionChild](comment);
@@ -86706,28 +86733,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
           return commentsTree;
         }
-        /**
-         * Transforms comments that came from a database in a one-dimensional array,
-         * to comments in a one-dimensional array that have some additional properties.
-         */
-
-      }, {
-        key: "transform",
-        value: function transform(allCommentsFromDb) {
-          return allCommentsFromDb.map(function (commentFromDb) {
-            return {
-              commentId: commentFromDb.commentId,
-              parentId: commentFromDb.parentId || 0,
-              children: []
-            };
-          });
-        }
       }]);
 
-      return DefaultCommentsToTree;
+      return CommentsToTree;
     }();
 
-    exports.DefaultCommentsToTree = DefaultCommentsToTree; //# sourceMappingURL=index.js.map
+    exports.CommentsToTree = CommentsToTree; //# sourceMappingURL=main.js.map
 
     /***/
   },

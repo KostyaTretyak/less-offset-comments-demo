@@ -1,21 +1,9 @@
 import { Injectable } from '@angular/core';
+
+import { CommentsToTree } from '@ts-stack/comments-to-tree';
 import { Comment } from 'less-offset-comments';
-import { DefaultCommentsToTree } from '@ts-stack/comments-to-tree';
 
-import { CommentFromDb, CommentTree } from './comment';
-
-export class CommentsToTree extends DefaultCommentsToTree {
-  protected static transform(allCommentsFromDb: CommentFromDb[]): CommentTree[] {
-    return allCommentsFromDb.map((commentFromDb) => {
-      return {
-        commentId: commentFromDb.commentId,
-        userId: commentFromDb.userId,
-        parentId: commentFromDb.parentId || 0,
-        children: [],
-      };
-    });
-  }
-}
+import { CommentFromDb } from './types';
 
 @Injectable()
 export class CommentService {
@@ -49,6 +37,6 @@ export class CommentService {
     // This is only for the demo, in real life reverse direct should come from database.
     this.commentsFromDb.reverse();
 
-    return CommentsToTree.getTree<CommentFromDb, CommentTree>(this.commentsFromDb);
+    return CommentsToTree.getTree<CommentFromDb>(this.commentsFromDb);
   }
 }

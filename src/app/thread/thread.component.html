@@ -17,7 +17,7 @@
     <ng-container *ngIf="!comment.wantDel">
       <button (click)="onSubmit(comment)">Reply</button>
       as user:
-      <select [formControl]="control">
+      <select [formControl]="select">
         <option *ngFor="let item of [1, 2, 3, 4]" [ngValue]="item">{{ item }}</option>
       </select>
     </ng-container>

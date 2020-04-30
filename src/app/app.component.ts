@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Comment } from 'less-offset-comments';
 
-import { RootComment, DemoComment } from './comment';
+import { RootComment, DemoComment } from './types';
 import { CommentService } from './comment.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  control = new FormControl(1);
+  select = new FormControl(1);
   rootComment = new RootComment();
   comments: Comment[] = [];
 
@@ -22,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    const comment = new DemoComment(this.control.value);
+    const comment = new DemoComment(this.select.value);
     this.comments.unshift(comment);
   }
 }

@@ -1,17 +1,3 @@
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -77,9 +63,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _comment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./comment */
-    "./src/app/comment.ts");
+    var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./types */
+    "./src/app/types.ts");
     /* harmony import */
 
 
@@ -134,8 +120,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, AppComponent);
 
         this.commentService = commentService;
-        this.control = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](1);
-        this.rootComment = new _comment__WEBPACK_IMPORTED_MODULE_1__["RootComment"]();
+        this.select = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](1);
+        this.rootComment = new _types__WEBPACK_IMPORTED_MODULE_1__["RootComment"]();
         this.comments = [];
       }
 
@@ -147,7 +133,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var comment = new _comment__WEBPACK_IMPORTED_MODULE_1__["DemoComment"](this.control.value);
+          var comment = new _types__WEBPACK_IMPORTED_MODULE_1__["DemoComment"](this.select.value);
           this.comments.unshift(comment);
         }
       }]);
@@ -229,7 +215,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.control);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.select);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -241,7 +227,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       },
       directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControlDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _thread_thread_component__WEBPACK_IMPORTED_MODULE_5__["ThreadComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_x"]],
-      styles: ["ul[_ngcontent-%COMP%] {\n  list-style-type: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQkFBcUI7QUFDdkIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInVsIHtcbiAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xufVxuIl19 */"]
+      encapsulation: 2
     });
     /*@__PURE__*/
 
@@ -250,8 +236,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           selector: 'app-root',
-          templateUrl: './app.component.html',
-          styleUrls: ['./app.component.css']
+          templateUrl: './app.component.html'
         }]
       }], function () {
         return [{
@@ -365,19 +350,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/comment.service.ts ***!
     \************************************/
 
-  /*! exports provided: CommentsToTree, CommentService */
+  /*! exports provided: CommentService */
 
   /***/
   function srcAppCommentServiceTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "CommentsToTree", function () {
-      return CommentsToTree;
-    });
     /* harmony export (binding) */
 
 
@@ -400,34 +379,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     var _ts_stack_comments_to_tree__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ts_stack_comments_to_tree__WEBPACK_IMPORTED_MODULE_1__);
-
-    var CommentsToTree = /*#__PURE__*/function (_ts_stack_comments_to) {
-      _inherits(CommentsToTree, _ts_stack_comments_to);
-
-      var _super = _createSuper(CommentsToTree);
-
-      function CommentsToTree() {
-        _classCallCheck(this, CommentsToTree);
-
-        return _super.apply(this, arguments);
-      }
-
-      _createClass(CommentsToTree, null, [{
-        key: "transform",
-        value: function transform(allCommentsFromDb) {
-          return allCommentsFromDb.map(function (commentFromDb) {
-            return {
-              commentId: commentFromDb.commentId,
-              userId: commentFromDb.userId,
-              parentId: commentFromDb.parentId || 0,
-              children: []
-            };
-          });
-        }
-      }]);
-
-      return CommentsToTree;
-    }(_ts_stack_comments_to_tree__WEBPACK_IMPORTED_MODULE_1__["DefaultCommentsToTree"]);
 
     var CommentService = /*#__PURE__*/function () {
       function CommentService() {
@@ -509,7 +460,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function getComments() {
           // This is only for the demo, in real life reverse direct should come from database.
           this.commentsFromDb.reverse();
-          return CommentsToTree.getTree(this.commentsFromDb);
+          return _ts_stack_comments_to_tree__WEBPACK_IMPORTED_MODULE_1__["CommentsToTree"].getTree(this.commentsFromDb);
         }
       }]);
 
@@ -531,52 +482,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
       }], null, null);
     })();
-    /***/
-
-  },
-
-  /***/
-  "./src/app/comment.ts":
-  /*!****************************!*\
-    !*** ./src/app/comment.ts ***!
-    \****************************/
-
-  /*! exports provided: RootComment, DemoComment */
-
-  /***/
-  function srcAppCommentTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "RootComment", function () {
-      return RootComment;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "DemoComment", function () {
-      return DemoComment;
-    });
-
-    var RootComment = function RootComment() {
-      _classCallCheck(this, RootComment);
-
-      this.userId = 1;
-    };
-
-    var DemoComment = function DemoComment(userId) {
-      var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-      var children = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-
-      _classCallCheck(this, DemoComment);
-
-      this.userId = userId;
-      this.parent = parent;
-      this.children = children;
-    };
     /***/
 
   },
@@ -625,9 +530,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _comment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../comment */
-    "./src/app/comment.ts");
+    var _types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../types */
+    "./src/app/types.ts");
     /* harmony import */
 
 
@@ -787,7 +692,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx_r6.control);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx_r6.select);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -875,7 +780,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function ThreadComponent() {
         _classCallCheck(this, ThreadComponent);
 
-        this.control = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](1);
+        this.select = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](1);
       }
 
       _createClass(ThreadComponent, [{
@@ -890,7 +795,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onSubmit",
         value: function onSubmit(parent) {
-          var child = new _comment__WEBPACK_IMPORTED_MODULE_3__["DemoComment"](this.control.value, parent);
+          var child = new _types__WEBPACK_IMPORTED_MODULE_3__["DemoComment"](this.select.value, parent);
           less_offset_comments__WEBPACK_IMPORTED_MODULE_2__["LessOffsetComments"].unshiftComment(parent, child);
         }
       }, {
@@ -926,7 +831,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], ThreadComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_x"]],
-      styles: [".demo-comment[_ngcontent-%COMP%] {\n  border-left: 1px dashed brown;\n  border-bottom: 1px dashed brown;\n  border-radius: 3px;\n  padding: 10px;\n}\n\n.demo-content[_ngcontent-%COMP%] {\n  margin: 5px;\n}\n\n.avatar[_ngcontent-%COMP%] {\n  margin: 3px 5px;\n  float: left;\n}\n\n.ava-30[_ngcontent-%COMP%] {\n  width: 30px;\n  height: 30px;\n}\n\nul[_ngcontent-%COMP%] {\n  list-style-type: none;\n}\n\n.user-id-1[_ngcontent-%COMP%] {\n  background-color: #ecfdec;\n}\n\n.user-id-2[_ngcontent-%COMP%] {\n  background-color: #ecf3fd;\n}\n\n.user-id-3[_ngcontent-%COMP%] {\n  background-color: #eae8d6;\n}\n\n.user-id-4[_ngcontent-%COMP%] {\n  background-color: #f7ecfd;\n}\n\n.offset-comment[_ngcontent-%COMP%] {\n  margin-left: 40px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGhyZWFkL3RocmVhZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsNkJBQTZCO0VBQzdCLCtCQUErQjtFQUMvQixrQkFBa0I7RUFDbEIsYUFBYTtBQUNmOztBQUVBO0VBQ0UsV0FBVztBQUNiOztBQUVBO0VBQ0UsZUFBZTtFQUNmLFdBQVc7QUFDYjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBR0E7RUFDRSxpQkFBaUI7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC90aHJlYWQvdGhyZWFkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGVtby1jb21tZW50IHtcbiAgYm9yZGVyLWxlZnQ6IDFweCBkYXNoZWQgYnJvd247XG4gIGJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgYnJvd247XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgcGFkZGluZzogMTBweDtcbn1cblxuLmRlbW8tY29udGVudCB7XG4gIG1hcmdpbjogNXB4O1xufVxuXG4uYXZhdGFyIHtcbiAgbWFyZ2luOiAzcHggNXB4O1xuICBmbG9hdDogbGVmdDtcbn1cblxuLmF2YS0zMCB7XG4gIHdpZHRoOiAzMHB4O1xuICBoZWlnaHQ6IDMwcHg7XG59XG5cbnVsIHtcbiAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xufVxuXG4udXNlci1pZC0xIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2VjZmRlYztcbn1cblxuLnVzZXItaWQtMiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlY2YzZmQ7XG59XG5cbi51c2VyLWlkLTMge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWFlOGQ2O1xufVxuXG4udXNlci1pZC00IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y3ZWNmZDtcbn1cblxuXG4ub2Zmc2V0LWNvbW1lbnQge1xuICBtYXJnaW4tbGVmdDogNDBweDtcbn0iXX0= */"]
+      encapsulation: 2
     });
     /*@__PURE__*/
 
@@ -935,8 +840,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           selector: 'cst-thread',
-          templateUrl: './thread.component.html',
-          styleUrls: ['./thread.component.css']
+          templateUrl: './thread.component.html'
         }]
       }], null, {
         comments: [{
@@ -944,6 +848,52 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       });
     })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/types.ts":
+  /*!**************************!*\
+    !*** ./src/app/types.ts ***!
+    \**************************/
+
+  /*! exports provided: RootComment, DemoComment */
+
+  /***/
+  function srcAppTypesTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "RootComment", function () {
+      return RootComment;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DemoComment", function () {
+      return DemoComment;
+    });
+
+    var RootComment = function RootComment() {
+      _classCallCheck(this, RootComment);
+
+      this.userId = 1;
+    };
+
+    var DemoComment = function DemoComment(userId) {
+      var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var children = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+      _classCallCheck(this, DemoComment);
+
+      this.userId = userId;
+      this.parent = parent;
+      this.children = children;
+    };
     /***/
 
   },
