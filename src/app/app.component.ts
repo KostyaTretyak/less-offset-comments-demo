@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Comment } from 'less-offset-comments';
+
+import { RootComment, DemoComment } from './comment';
+import { CommentService } from './comment.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'less-offset-comments-demo';
+export class AppComponent implements OnInit {
+  rootComment = new RootComment();
+  comments: Comment[] = [];
+
+  constructor(private commentService: CommentService) {}
+
+  ngOnInit() {
+    this.comments = this.commentService.getComments();
+  }
+
+  onSubmit() {
+    const comment = new DemoComment(this.rootComment.userId);
+    this.comments.unshift(comment);
+  }
 }

@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+div {
+  -webkit-transition: all linear .5s;
+  transition: all linear .5s;
+}
+
+.comment-container {
+  margin: 50px;
+  margin-bottom: 200px;
+}
