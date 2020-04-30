@@ -17,11 +17,8 @@
     <ng-container *ngIf="!comment.wantDel">
       <button (click)="onSubmit(comment)">Reply</button>
       as user:
-      <select [(ngModel)]="comment.fromUserId" name="fromUserId">
-        <option [value]="1">1</option>
-        <option [value]="2">2</option>
-        <option [value]="3">3</option>
-        <option [value]="4">4</option>
+      <select [formControl]="control">
+        <option *ngFor="let item of [1, 2, 3, 4]" [ngValue]="item">{{ item }}</option>
       </select>
     </ng-container>
   </div>

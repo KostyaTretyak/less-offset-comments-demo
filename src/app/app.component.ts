@@ -3,6 +3,7 @@ import { Comment } from 'less-offset-comments';
 
 import { RootComment, DemoComment } from './comment';
 import { CommentService } from './comment.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { CommentService } from './comment.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  control = new FormControl(1);
   rootComment = new RootComment();
   comments: Comment[] = [];
 
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    const comment = new DemoComment(this.rootComment.userId);
+    const comment = new DemoComment(this.control.value);
     this.comments.unshift(comment);
   }
 }

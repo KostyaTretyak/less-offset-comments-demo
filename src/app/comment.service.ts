@@ -12,7 +12,6 @@ export class CommentsToTree extends DefaultCommentsToTree {
         userId: commentFromDb.userId,
         parentId: commentFromDb.parentId || 0,
         children: [],
-        fromUserId: 1,
       };
     });
   }

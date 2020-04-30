@@ -7,16 +7,13 @@
 </p>
 
 <hr>
-<form style="margin-top: 50px;">
+<ng-container style="margin-top: 50px;">
   <button (click)="onSubmit()">Sumbit root comment</button>
   as user:
-  <select [(ngModel)]="rootComment.userId" name="userId">
-    <option [value]="1">1</option>
-    <option [value]="2">2</option>
-    <option [value]="3">3</option>
-    <option [value]="4">4</option>
+  <select [formControl]="control">
+    <option *ngFor="let item of [1, 2, 3, 4]" [ngValue]="item">{{ item }}</option>
   </select>
-</form>
+</ng-container>
 
 <div class="comment-container">
   <cst-thread [comments]="comments"></cst-thread>
