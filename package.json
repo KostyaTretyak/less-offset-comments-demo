@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --output-path docs --base-href /less-offset-comments-demo --deploy-url /less-offset-comments-demo/",
+    "start": "ng serve --base-href /less-offset-comments-demo/ --deploy-url /less-offset-comments-demo/ --serve-path /less-offset-comments-demo/",
+    "build": "ng build --output-path docs --base-href /less-offset-comments-demo/ --deploy-url /less-offset-comments-demo/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
